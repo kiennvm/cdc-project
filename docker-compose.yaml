@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+
+  oracle:
+    image: kiennvm/oracle:19c-ee
+    container_name: oracle
+    environment:
+      ORACLE_PWD: top_secret
+    volumes:
+      - ./oracle-data:/opt/oracle/oradata
+    ports:
+      - "1521:1521"
+    shm_size: 1g
+
+  sql-server:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./mssql-data:/var/opt/mssql
+
+volumes:
+  mssql-data:
+  oracle-data:
