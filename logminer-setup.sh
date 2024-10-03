@@ -79,5 +79,5 @@ sqlplus sys/top_secret@//localhost:1521/ORCLPDB1 as sysdba <<- EOF
   GRANT CREATE SEQUENCE to debezium;
   ALTER USER debezium QUOTA 500M on users;
   
-  
+  exit;
 EOF
